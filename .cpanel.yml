@@ -2,5 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/wildhog/valvesite/
-    - /bin/cp index.php $DEPLOYPATH
-    - /bin/cp style.css $DEPLOYPATH
+    - /bin/cp /home/wildhog/valvesite/index.php $DEPLOYPATH
+    - /bin/cp /home/wildhog/valvesite/style.css $DEPLOYPATH
