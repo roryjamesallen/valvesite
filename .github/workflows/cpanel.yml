@@ -33,5 +33,6 @@ jobs:
           repository_root: '/home/wildhog/valvesite'
           branch: main
           cpanel_token: '${{ secrets.cpanel }}'
+          cpanel_username: wildhog
       - name: echo deploy-duration
         run: echo "Deployment took ${{ steps.deploy.outputs.duration }} milliseconds"
