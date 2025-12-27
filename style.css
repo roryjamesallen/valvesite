@@ -2,3 +2,16 @@ body {
     background: black;
     color: white;
 }
+#intro-animation {
+    width: min(400px, 90vw);
+    height: min(250px, 90vh);
+    border: 4px solid white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+}
