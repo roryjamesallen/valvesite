@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="style.css">
     </head>
     <body>
-	<h1>the valve that failed</h1>
+	<h1>the valve that failed, eat the burger</h1>
 	<div id="intro-animation"></div>
     </body>
     <script>
