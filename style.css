@@ -1,6 +1,23 @@
+@font-face {
+    font-family: Press Start;
+    src: url(fonts/press_start.ttf);
+}
+@font-face {
+    font-family: Gothic Pixels;
+    src: url(fonts/gothic_pixels.ttf);
+}
 body {
     background: black;
     color: white;
+    font-family: Press Start;
+}
+h1 {
+    margin: auto;
+    text-align: center;
+    font-size: 1rem;
+}
+.gothic {
+    font-family: Gothic Pixels;
 }
 #intro-animation {
     width: min(400px, 90vw);
