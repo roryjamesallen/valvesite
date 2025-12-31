@@ -3,9 +3,22 @@
     <head>
 	<title>The Valve That Failed</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<meta charset="utf-8">
     </head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6BQYQMEP06"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'G-6BQYQMEP06');
+    </script>
+  
     <body>
-	<h1>the valve that failed, eat the burger pretty pls</h1>
+	<h1>the valve that failed</h1>
 	<div id="intro-animation"></div>
     </body>
     <script>
