@@ -33,6 +33,12 @@ header("Pragma: no-cache");
 	    <div id="intro-animation"></div>
 	</div>
 	<div id="message"></div>
+	<div id="menu">
+	    <div class="expander-title" id="lorem-title">Expand</div>
+	    <div class="expandable" id="lorem-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+	    <span class="space"> </span><div class="expander-title" id="seconda-title">Expand</div>
+	    <div class="expandable" id="seconda-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+	</div>
     </body>
     <script>
      const titles = [
@@ -133,10 +139,24 @@ header("Pragma: no-cache");
 	 terminal.style.minHeight = 0;
 	 setTimeout(() => { document.getElementById('intro-animation').style.opacity = 1; }, 250);
      }
+     function toggleExpanded(id){
+	 const element = document.getElementById(id);
+	 if (element.classList.contains('expanded')){
+	     element.classList.remove('expanded');
+	 } else {
+	     element.classList.add('expanded');
+	 }
+     }
 
      document.getElementById('close-terminal').addEventListener('click', closeTerminal);
      document.getElementById('minimise-terminal').addEventListener('click', minimiseTerminal);
      document.getElementById('maximise-terminal').addEventListener('click', maximiseTerminal);
+
+     document.querySelectorAll('.expander-title').forEach(function(element) {
+	 element.addEventListener("mouseover", () => { document.getElementById(element.id.replace('-title','-text')).classList.add('expanded') });
+	 element.addEventListener("touchstart", () => { toggleExpanded(element.id.replace('-title','-text')) });
+	 element.addEventListener("mouseout", () => { document.getElementById(element.id.replace('-title','-text')).classList.remove('expanded') });
+     });
      
      window.onload = function() {
 	 introAnimation();
