@@ -18,8 +18,16 @@
     </script>
   
     <body>
-	<h1>the valve that failed</h1>
-	<div id="intro-animation"></div>
+	<div class="window" id="terminal">
+	    <div class="toolbar">
+		<div class="title"><h1>the valve that failed</h1></div>
+		<div class="button" id="minimise-terminal">_</div>
+		<div class="button" id="maximise-terminal">□</div>
+		<div class="button" id="close-terminal">X</div>
+	    </div>
+	    <div id="intro-animation"></div>
+	</div>
+	<div id="message"></div>
     </body>
     <script>
      const titles = [
@@ -96,6 +104,34 @@
 	 div.style.display = 'flex';
 	 animateText(div,('the valve that failed ... STOP ... '+shuffleArray(titles).join(' ... STOP ... ')+' ... ').split(' '), 150);
      }
+     function closeTerminal(){
+	 const terminal = document.getElementById('terminal');
+	 terminal.style.width = 0;
+	 terminal.style.height = 0;
+	 terminal.style.opacity = 0;
+	 setTimeout(() => { killedValve() }, 250);
+     }
+     function killedValve(){
+	 const message = document.getElementById('message');
+	 message.style.display = 'fixed';
+	 animateText(message, 'you have killed the valve that failed ... '.split(' '), 250);
+     }
+     function minimiseTerminal(){
+	 const terminal = document.getElementById('terminal');
+	 terminal.style.height = '20px';
+	 terminal.style.minHeight = 0;
+	 document.getElementById('intro-animation').style.opacity = 0;
+     }
+     function maximiseTerminal(){
+	 const terminal = document.getElementById('terminal');
+	 terminal.style.height = 'min(350px, 90vh)';
+	 terminal.style.minHeight = 0;
+	 setTimeout(() => { document.getElementById('intro-animation').style.opacity = 1; }, 250);
+     }
+
+     document.getElementById('close-terminal').addEventListener('click', closeTerminal);
+     document.getElementById('minimise-terminal').addEventListener('click', minimiseTerminal);
+     document.getElementById('maximise-terminal').addEventListener('click', maximiseTerminal);
      
      window.onload = function() {
 	 introAnimation();

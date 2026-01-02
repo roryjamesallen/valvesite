@@ -6,9 +6,12 @@
     font-family: Gothic Pixels;
     src: url(fonts/gothic_pixels.ttf);
 }
+:root {
+    --background: black;
+    --foreground: white;
 body {
-    background: black;
-    color: white;
+    background: var(--background);
+    color: var(--foreground);
     font-family: Press Start;
 }
 h1 {
@@ -19,16 +22,52 @@ h1 {
 .gothic {
     font-family: Gothic Pixels;
 }
-#intro-animation {
-    width: min(400px, 90vw);
-    height: min(250px, 90vh);
-    border: 4px solid white;
-    display: none;
+#terminal {
+    width: min(700px, 90vw);
+    height: min(350px, 90vh);
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 2rem;
+    transition: width 0.5s, height 0.5s, opacity 0.25s;
+}
+.window {
+    border: 2px solid var(--foreground);
+    min-width: 150px;
+    min-height: 150px;
+}
+.window > .toolbar {
+    flex-basis: 100%;
+    height: 20px;
+    outline: 2px solid var(--foreground);
+    display: flex;
+    justify-content: end;
+}
+.toolbar > .button {
+    outline: 2px solid var(--foreground);
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    font-family: Arial;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.toolbar > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.toolbar > .title {
+    flex-grow: 1;
+}
+#message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: var(--foreground);
 }
