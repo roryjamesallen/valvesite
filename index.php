@@ -18,11 +18,11 @@ header("Pragma: no-cache");
      window.dataLayer = window.dataLayer || [];
      function gtag(){dataLayer.push(arguments);}
      gtag('js', new Date());
-
      gtag('config', 'G-6BQYQMEP06');
     </script>
-  
+    
     <body>
+	<span style="display: none">test</span>
 	<div class="window" id="terminal">
 	    <div class="toolbar">
 		<div class="title"><h1>the valve that failed</h1></div>
