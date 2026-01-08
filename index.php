@@ -25,7 +25,7 @@ header("Pragma: no-cache");
 	<span style="display: none">test</span>
 	<div class="window" id="terminal">
 	    <div class="toolbar">
-		<div class="title"><h1>the valve that failed</h1></div>
+		<div class="title"><h1>the valve that failed the mac n cheese championships</h1></div>
 		<div class="button" id="minimise-terminal">_</div>
 		<div class="button" id="maximise-terminal">□</div>
 		<div class="button" id="close-terminal">X</div>
