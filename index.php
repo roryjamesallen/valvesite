@@ -88,12 +88,12 @@ header("Pragma: no-cache");
      function updateElementText(element, text){
 	 element.innerText = text;
      }
-     function animateText(element, words, speed){
+     function animateText(element, words, speed){ // Begin an animation displays array words word by word with word interval set by speed
 	 for (let word_index = 0; word_index < words.length; ++word_index) {
 	     setTimeout(updateElementText, (speed * word_index), element, words[word_index]);
 	 }
      }
-     function shuffleArray(array) {
+     function shuffleArray(array) { // Return supplied array in randomised order. Does not affect original array
 	 let original_array = array.slice(); // Create copy of original array
 	 let currentIndex = original_array.length;
 	 while (currentIndex != 0) {
@@ -104,12 +104,12 @@ header("Pragma: no-cache");
 	 }
 	 return original_array
      }
-     function introAnimation(){
+     function introAnimation(){ // Start running the animation of valve titles in a random order
 	 const div = document.getElementById('intro-animation');
 	 div.style.display = 'flex';
 	 animateText(div,('the valve that failed ... STOP ... '+shuffleArray(titles).join(' ... STOP ... ')+' ... ').split(' '), 150);
      }
-     function closeTerminal(){
+     function closeTerminal(){ // Start animation to make it look like the fake window/terminal was closed
 	 const terminal = document.getElementById('terminal');
 	 terminal.style.width = 0;
 	 terminal.style.height = 0;
@@ -121,13 +121,13 @@ header("Pragma: no-cache");
 	 message.style.display = 'fixed';
 	 animateText(message, 'you have killed the valve that failed ... '.split(' '), 250);
      }
-     function minimiseTerminal(){
+     function minimiseTerminal(){ // Make it look like the window/terminal was minimsed to just its header
 	 const terminal = document.getElementById('terminal');
 	 terminal.style.height = '20px';
 	 terminal.style.minHeight = 0;
 	 document.getElementById('intro-animation').style.opacity = 0;
      }
-     function maximiseTerminal(){
+     function maximiseTerminal(){ // Show the full window/terminal
 	 const terminal = document.getElementById('terminal');
 	 terminal.style.height = 'min(350px, 90vh)';
 	 terminal.style.minHeight = 0;
