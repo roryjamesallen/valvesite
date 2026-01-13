@@ -85,3 +85,16 @@ h1 {
 .hover-reveal:hover {
 	color: white;
 }
+
+.hover-image {
+	width: 100px;
+	height: auto;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	cursor: pointer;
+}
+
+.hover-image:hover {
+	opacity: 1;
+}
+

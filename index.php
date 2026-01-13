@@ -21,7 +21,9 @@ header("Pragma: no-cache");
      gtag('config', 'G-6BQYQMEP06');
     </script>
     <body>
-	<a href="https://hogwild.uk" class=hover-reveal>feed the hog</a>
+	<a href="https://hogwild.uk" class=hover-reveal>
+		<img src="images/torch.png" alt="torch" class="hover-image">
+	</a>
 	<span style="display: none">test</span>
 	<div class="window" id="terminal">
 	    <div class="toolbar">
@@ -33,6 +35,7 @@ header("Pragma: no-cache");
 	    <div id="intro-animation"></div>
 	</div>
 	<div id="message"></div>
+	<p style="position: fixed; bottom: 0; width: 100%; text-align: center">seek the light in this sea of dark</p>
     </body>
     <script>
      const titles = [
