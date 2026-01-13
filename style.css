@@ -74,3 +74,14 @@ h1 {
     font-size: 2rem;
     color: var(--foreground);
 }
+
+.hover-reveal {
+
+	color: transparent;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.hover-reveal:hover {
+	color: white;
+}

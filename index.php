@@ -21,7 +21,7 @@ header("Pragma: no-cache");
      gtag('config', 'G-6BQYQMEP06');
     </script>
     <body>
-	<a href="https://hogwild.uk">feed the hog</a>
+	<a href="https://hogwild.uk" class=hover-reveal>feed the hog</a>
 	<span style="display: none">test</span>
 	<div class="window" id="terminal">
 	    <div class="toolbar">
