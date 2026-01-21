@@ -76,25 +76,22 @@ h1 {
 }
 
 .hover-reveal {
-
-	color: transparent;
-	text-decoration: none;
-	transition: color 0.3s ease;
+    color: transparent;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .hover-reveal:hover {
-	color: white;
+    color: white;
 }
 
 .hover-image {
-	width: 100px;
-	height: auto;
-	opacity: 0;
-	transition: opacity 0.3s ease;
-	cursor: pointer;
+    height: 70px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
 }
 
 .hover-image:hover {
-	opacity: 1;
+    opacity: 1;
 }
-
