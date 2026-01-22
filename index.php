@@ -21,8 +21,8 @@ header("Pragma: no-cache");
      gtag('config', 'G-6BQYQMEP06');
     </script>
     <body>
-	<a href="https://hogwild.uk" class=hover-reveal>
-		<img src="images/torch.png" alt="torch" class="hover-image">
+	<a href="https://hogwild.uk" class="hover-reveal">
+		<img src="images/match-lit.gif" id="match" alt="animated match" class="hover-image">
 	</a>
 	<span style="display: none">test</span>
 	<div class="window" id="terminal">
@@ -136,6 +136,25 @@ header("Pragma: no-cache");
 	 terminal.style.minHeight = 0;
 	 setTimeout(() => { document.getElementById('intro-animation').style.opacity = 1; }, 250);
      }
+
+     // Match Functions
+     const match = document.getElementById('match');
+     var match_active = false;
+     function lightMatch(){
+	 if (!match_active){
+	     match_active = true;
+	     match.src = 'images/match-lighting.gif';
+	     setTimeout(() => {
+		 match.src = 'images/match-lit.gif';
+	     }, 660);
+	 }
+     }
+     function extinguishMatch(){
+	 match_active = false;
+	 setTimeout(() => { match.src = 'images/match-out.png'; }, 200);
+     }
+     match.addEventListener('mouseover', lightMatch);
+     match.addEventListener('mouseout', extinguishMatch);
 
      document.getElementById('close-terminal').addEventListener('click', closeTerminal);
      document.getElementById('minimise-terminal').addEventListener('click', minimiseTerminal);
