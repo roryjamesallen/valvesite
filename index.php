@@ -161,7 +161,6 @@ header("Pragma: no-cache");
      document.getElementById('maximise-terminal').addEventListener('click', maximiseTerminal);
      
      window.onload = function() {
-	 document.getElementById('')
 	 introAnimation();
      };
     </script>
