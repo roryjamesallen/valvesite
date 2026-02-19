@@ -21,7 +21,7 @@ header("Pragma: no-cache");
      gtag('config', 'G-6BQYQMEP06');
     </script>
     <body>
-	<a href="https://hogwild.uk" class="hover-reveal">
+	<a href="https://valve.hogwild.uk/faces" class="hover-reveal">
 		<img src="images/match-lit.gif" id="match" alt="animated match" class="hover-image">
 	</a>
 	<span style="display: none">test</span>
