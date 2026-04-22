@@ -2,7 +2,7 @@
 
 function renderTrack($track_id, $track){
     $date = date("d-m-y", $track['time']);
-    echo "<li class='track' id='track-{$track_id}'><h3>{$track_id}</h3><span class='play-button'>→</span><a href='{$track_id}' download class='download-button'>↓</a><span class='track-time'>{$date}</span></li>";
+    echo "<li class='track' id='track-{$track_id}'><h3>{$track_id}</h3><span class='play-button'>→</span><a href='tracks/{$track_id}' download class='download-button'>↓</a><span class='track-time'>{$date}</span></li>";
 }
 
 function renderTracks(){
