@@ -9,6 +9,7 @@
 :root {
     --background: black;
     --foreground: white;
+    --track-border: 2px;
 body {
     background: var(--background);
     color: var(--foreground);
@@ -23,15 +24,11 @@ h1 {
     font-family: Gothic Pixels;
 }
 #terminal {
-    width: min(700px, 90vw);
+    width: 100%;
     height: min(350px, 90vh);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-size: 2rem;
     transition: width 0.5s, height 0.5s, opacity 0.25s;
 }
@@ -95,4 +92,74 @@ h1 {
 
 .hover-image:hover {
     opacity: 1;
+}
+
+.page-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: min(90vw, 800px);
+    margin: 4rem auto;
+    gap: 2rem;
+}
+
+.tracklist {
+    list-style-type: none;
+    padding: 0;
+    flex-basis: 50%;
+}
+.track {
+    display: flex;
+    flex-wrap: wrap;
+    border: var(--track-border) solid white;
+    width: fit-content;
+    align-items: start;
+    gap: var(--track-border);
+    background-color: white;
+    position: relative;
+    margin-bottom: 3rem;
+}
+.track:has(.playing){
+    border-color: red;
+    background-color: red;
+    color: red;
+}
+.track > h3, .play-button, .download-button {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-color: black;
+}
+.track > h3 {
+    font-size: 1rem;
+    padding: 0.5rem;
+    height: fit-content;
+}
+.play-button, .download-button {
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+}
+.download-button {
+    text-decoration: none;
+    color: unset
+}
+.track-time {
+    position: absolute;
+    bottom: -1.25rem;
+    left: 0;
+    font-size: 0.75rem;
+}
+
+
+#face {
+    position: relative;
+    width: 350px;
+    height: 350px;
+}
+#face > * {
+    position: absolute;
+    width: 100%;
+    filter: invert(1);
 }

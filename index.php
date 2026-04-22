@@ -39,77 +39,7 @@ function renderTracks(){
     </script>
 
     <style>
-     :root {
-	 --track-border: 2px;
-     }
-
-     .page-container {
-	 display: flex;
-	 flex-wrap: wrap;
-	 margin-top: 4rem;
-	 justify-content: center;
-     }
      
-     .tracklist {
-	 list-style-type: none;
-	 padding: 0;
-	 flex-basis: 50%;
-     }
-     .track {
-	 display: flex;
-	 flex-wrap: wrap;
-	 border: var(--track-border) solid white;
-	 width: fit-content;
-	 align-items: start;
-	 gap: var(--track-border);
-	 background-color: white;
-	 position: relative;
-	 margin-bottom: 3rem;
-     }
-     .track:has(.playing){
-	 border-color: red;
-	 background-color: red;
-	 color: red;
-     }
-     .track > h3, .play-button, .download-button {
-	 height: 2rem;
-	 display: flex;
-	 align-items: center;
-	 justify-content: center;
-	 margin: 0;
-	 background-color: black;
-     }
-     .track > h3 {
-	 font-size: 1rem;
-	 padding: 0.5rem;
-	 height: fit-content;
-     }
-     .play-button, .download-button {
-	 aspect-ratio: 1 / 1;
-	 cursor: pointer;
-     }
-     .download-button {
-	 text-decoration: none;
-	 color: unset
-     }
-     .track-time {
-	 position: absolute;
-	 bottom: -1.25rem;
-	 left: 0;
-	 font-size: 0.75rem;
-     }
-
-
-     #face {
-	 position: relative;
-	 width: 350px;
-	 height: 350px;
-     }
-     #face > * {
-	 position: absolute;
-	 width: 100%;
-	 filter: invert(1);
-     }
     </style>
     
     <body>
@@ -129,7 +59,19 @@ function renderTracks(){
 		<img id="mouth">
 		<img id="chin">
 	    </div>
+
 	    <?php renderTracks(); ?>
+
+	    <div class="window" id="terminal">
+		<div class="toolbar">
+		    <div class="title"><h1>the valve that failed</h1></div>
+		    <div class="button" id="minimise-terminal">_</div>
+		    <div class="button" id="maximise-terminal">□</div>
+		    <div class="button" id="close-terminal">X</div>
+		</div>
+		<div id="intro-animation"></div>
+	    </div>
+	    <div id="message"></div>
 	</div>
 	
 	<audio id="player" preload="auto">
@@ -139,6 +81,8 @@ function renderTracks(){
 </html>
 
 <script>
+
+ // PLAYER
  const player = document.getElementById('player');
  const player_source = document.getElementById('player-source');
  function pauseAllTracks(){
@@ -178,6 +122,7 @@ function renderTracks(){
  }
 
 
+ //FACES
  const valves = ['valve-1','valve-2'];
  const features = document.getElementById('face').children;
 
@@ -189,6 +134,114 @@ function renderTracks(){
      feature_image_element.src = image_path;
  }
 
+
+ // TITLES
+ const titles = [
+     "within the chickens' domain",
+     "dave Matthews band chicago river incident",
+     "the centre of the observable universe",
+     "i always forget how dark it is in the forest",
+     "you might have got us this time, but we will get you next time",
+     "the allure of the canal",
+     "cease your meddling",
+     "if you leave me on read, I'm going to make your phone scream",
+     "where did all the stuff gone",
+     "pt1. curse their stinge when it comes to the cheese. pt2. and curse their generosity when it comes to the beans",
+     "stage two: the hatching of the eggs",
+     "there will be credits",
+     "i find comfort near the edge",
+     "the taste of what was previously on this fork",
+     "to be the second cop at the massage parlour",
+     "i have received some of the worst news i could ever have received",
+     "shining the torch on a dying slug",
+     "the number one ambient stuffing brand",
+     "the unofficial village gravedigger",
+     "brother, the cattle are aligned",
+     "have you seen the machines?",
+     "sokol's deception flowchart",
+     "if power systems engineering is teaching me anything it's that I will never ever be able to sketch even a half decent sine wave",
+     "easier done than said",
+     "jupiter in my hands; i want a house just like this",
+     "the skin, the viscera",
+     "the same dead eyes",
+     "there is something to be said about a man with a consistent face",
+     "it is a fate worth suffering",
+     "to be the cob chobber in this nottingham venue",
+     "every time i say something i add a second clause",
+     "transient loss of consciousness",
+     "a career in magnetics",
+     "pt3. the scribbles on the whiteboard",
+     "the bison on the plains",
+     "it starts on the other side of town",
+     "in one direction, we have a small empire of blood. In the other, you can taste the madness.",
+     "i used to read her scripture to my children",
+     "that portion of her time above the ground",
+     "she will sit right in front of me and say 'i'm sorry sir' then put me out of my misery",
+     "to get on the farm and claim my place as ye scabrous exporter of flesh and marrow",
+     "do winged beasts mourn for their fallen?",
+     "it's your round at the toxic pub",
+     "toxic gas on draught",
+     "dog chemo",
+     "the best player in bottom set pe",
+     "designing the canopy layer"
+ ];
+ 
+ function updateElementText(element, text){
+     element.innerText = text;
+ }
+ function animateText(element, words, speed){ // Begin an animation displays array words word by word with word interval set by speed
+     for (let word_index = 0; word_index < words.length; ++word_index) {
+	 setTimeout(updateElementText, (speed * word_index), element, words[word_index]);
+     }
+ }
+ function shuffleArray(array) { // Return supplied array in randomised order. Does not affect original array
+     let original_array = array.slice(); // Create copy of original array
+     let currentIndex = original_array.length;
+     while (currentIndex != 0) {
+	 let randomIndex = Math.floor(Math.random() * currentIndex);
+	 currentIndex--;
+	 [original_array[currentIndex], original_array[randomIndex]] = [
+	     original_array[randomIndex], original_array[currentIndex]];
+     }
+     return original_array
+ }
+ function introAnimation(){ // Start running the animation of valve titles in a random order
+     const div = document.getElementById('intro-animation');
+     div.style.display = 'flex';
+     animateText(div,('the valve that failed ... STOP ... '+shuffleArray(titles).join(' ... STOP ... ')+' ... ').split(' '), 150);
+ }
+ function closeTerminal(){ // Start animation to make it look like the fake window/terminal was closed
+     const terminal = document.getElementById('terminal');
+     terminal.style.width = 0;
+     terminal.style.height = 0;
+     terminal.style.opacity = 0;
+     setTimeout(() => { killedValve() }, 250);
+ }
+ function killedValve(){
+     const message = document.getElementById('message');
+     message.style.display = 'fixed';
+     animateText(message, 'you have killed the valve that failed ... '.split(' '), 250);
+ }
+ function minimiseTerminal(){ // Make it look like the window/terminal was minimsed to just its header
+     const terminal = document.getElementById('terminal');
+     terminal.style.height = '20px';
+     terminal.style.minHeight = 0;
+     document.getElementById('intro-animation').style.opacity = 0;
+ }
+ function maximiseTerminal(){ // Show the full window/terminal
+     const terminal = document.getElementById('terminal');
+     terminal.style.height = 'min(350px, 90vh)';
+     terminal.style.minHeight = 0;
+     setTimeout(() => { document.getElementById('intro-animation').style.opacity = 1; }, 250);
+ }
+
  setInterval(changeRandomFeature, 50);
  initialiseTrackButtons();
+ document.getElementById('close-terminal').addEventListener('click', closeTerminal);
+ document.getElementById('minimise-terminal').addEventListener('click', minimiseTerminal);
+ document.getElementById('maximise-terminal').addEventListener('click', maximiseTerminal);
+ 
+ window.onload = function() {
+     introAnimation();
+ };
 </script>
