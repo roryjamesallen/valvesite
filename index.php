@@ -51,16 +51,17 @@ function renderTracks(){
 
 	<div class="page-container">
 	    <div id="face">
-		<img id="scalp">
-		<img id="left-eyebrow">
-		<img id="right-eyebrow">
-		<img id="left-eye">
-		<img id="right-eye">
-		<img id="left-ear">
-		<img id="right-ear">
-		<img id="nose">
-		<img id="mouth">
-		<img id="chin">
+		<img id="scalp" >
+		<img id="left-eyebrow" >
+		<img id="right-eyebrow" >
+		<img id="left-eye" >
+		<img id="right-eye" >
+		<img id="left-ear" >
+		<img id="right-ear" >
+		<img id="nose" >
+		<img id="mouth" >
+		<img id="chin" >
+		<span id="face-text"></span>
 	    </div>
 
 	    <?php renderTracks(); ?>
@@ -128,6 +129,7 @@ function renderTracks(){
  //FACES
  const valves = ['valve-1','valve-2'];
  const features = document.getElementById('face').children;
+ const face_text = document.getElementById('face-text');
 
  function changeRandomFeature(){
      const feature_index = Math.floor(Math.random() * features.length);
@@ -135,59 +137,62 @@ function renderTracks(){
      const feature_image_element = features[feature_index];
      const image_path = 'images/faces/' + valve + '/' + feature_image_element.id + '.png';
      feature_image_element.src = image_path;
+     image_bounds = feature_image_element.getBoundingClientRect();
+     const old_text = face_text.innerHTML;
+     face_text.innerHTML = valve + '-' + feature_image_element.id + '<br>' + old_text;
  }
 
 
- // TITLES
- const titles = [
-     "within the chickens' domain",
-     "dave Matthews band chicago river incident",
-     "the centre of the observable universe",
-     "i always forget how dark it is in the forest",
-     "you might have got us this time, but we will get you next time",
-     "the allure of the canal",
-     "cease your meddling",
-     "if you leave me on read, I'm going to make your phone scream",
-     "where did all the stuff gone",
-     "pt1. curse their stinge when it comes to the cheese. pt2. and curse their generosity when it comes to the beans",
-     "stage two: the hatching of the eggs",
-     "there will be credits",
-     "i find comfort near the edge",
-     "the taste of what was previously on this fork",
-     "to be the second cop at the massage parlour",
-     "i have received some of the worst news i could ever have received",
-     "shining the torch on a dying slug",
-     "the number one ambient stuffing brand",
-     "the unofficial village gravedigger",
-     "brother, the cattle are aligned",
-     "have you seen the machines?",
-     "sokol's deception flowchart",
-     "if power systems engineering is teaching me anything it's that I will never ever be able to sketch even a half decent sine wave",
-     "easier done than said",
-     "jupiter in my hands; i want a house just like this",
-     "the skin, the viscera",
-     "the same dead eyes",
-     "there is something to be said about a man with a consistent face",
-     "it is a fate worth suffering",
-     "to be the cob chobber in this nottingham venue",
-     "every time i say something i add a second clause",
-     "transient loss of consciousness",
-     "a career in magnetics",
-     "pt3. the scribbles on the whiteboard",
-     "the bison on the plains",
-     "it starts on the other side of town",
-     "in one direction, we have a small empire of blood. In the other, you can taste the madness.",
-     "i used to read her scripture to my children",
-     "that portion of her time above the ground",
-     "she will sit right in front of me and say 'i'm sorry sir' then put me out of my misery",
-     "to get on the farm and claim my place as ye scabrous exporter of flesh and marrow",
-     "do winged beasts mourn for their fallen?",
-     "it's your round at the toxic pub",
-     "toxic gas on draught",
-     "dog chemo",
-     "the best player in bottom set pe",
-     "designing the canopy layer"
- ];
+	 // TITLES
+	 const titles = [
+	     "within the chickens' domain",
+	     "dave Matthews band chicago river incident",
+	     "the centre of the observable universe",
+	     "i always forget how dark it is in the forest",
+	     "you might have got us this time, but we will get you next time",
+	     "the allure of the canal",
+	     "cease your meddling",
+	     "if you leave me on read, I'm going to make your phone scream",
+	     "where did all the stuff gone",
+	     "pt1. curse their stinge when it comes to the cheese. pt2. and curse their generosity when it comes to the beans",
+	     "stage two: the hatching of the eggs",
+	     "there will be credits",
+	     "i find comfort near the edge",
+	     "the taste of what was previously on this fork",
+	     "to be the second cop at the massage parlour",
+	     "i have received some of the worst news i could ever have received",
+	     "shining the torch on a dying slug",
+	     "the number one ambient stuffing brand",
+	     "the unofficial village gravedigger",
+	     "brother, the cattle are aligned",
+	     "have you seen the machines?",
+	     "sokol's deception flowchart",
+	     "if power systems engineering is teaching me anything it's that I will never ever be able to sketch even a half decent sine wave",
+	     "easier done than said",
+	     "jupiter in my hands; i want a house just like this",
+	     "the skin, the viscera",
+	     "the same dead eyes",
+	     "there is something to be said about a man with a consistent face",
+	     "it is a fate worth suffering",
+	     "to be the cob chobber in this nottingham venue",
+	     "every time i say something i add a second clause",
+	     "transient loss of consciousness",
+	     "a career in magnetics",
+	     "pt3. the scribbles on the whiteboard",
+	     "the bison on the plains",
+	     "it starts on the other side of town",
+	     "in one direction, we have a small empire of blood. In the other, you can taste the madness.",
+	     "i used to read her scripture to my children",
+	     "that portion of her time above the ground",
+	     "she will sit right in front of me and say 'i'm sorry sir' then put me out of my misery",
+	     "to get on the farm and claim my place as ye scabrous exporter of flesh and marrow",
+	     "do winged beasts mourn for their fallen?",
+	     "it's your round at the toxic pub",
+	     "toxic gas on draught",
+	     "dog chemo",
+	     "the best player in bottom set pe",
+	     "designing the canopy layer"
+	 ];
  
  function updateElementText(element, text){
      element.innerText = text;

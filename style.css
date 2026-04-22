@@ -31,6 +31,7 @@ h1 {
     justify-content: center;
     font-size: 2rem;
     transition: width 0.5s, height 0.5s, opacity 0.25s;
+    background-color: black;
 }
 .window {
     border: 2px solid var(--foreground);
@@ -162,4 +163,11 @@ h1 {
     position: absolute;
     width: 100%;
     filter: invert(1);
+}
+#face-text {
+    mix-blend-mode: difference;
+    z-index: -1;
+    color: black;
+    max-height: 20rem;
+    overflow-y: hidden;
 }
