@@ -44,7 +44,10 @@ function renderTracks(){
     
     <body>
 	<h1>the valve that failed</h1>
-	
+
+	<a href="https://hogwild.uk" class="hover-reveal">
+	    <img src="images/match-lit.gif" id="match" alt="animated match" class="hover-image">
+	</a>
 
 	<div class="page-container">
 	    <div id="face">
@@ -235,6 +238,28 @@ function renderTracks(){
      setTimeout(() => { document.getElementById('intro-animation').style.opacity = 1; }, 250);
  }
 
+
+ // MATCH
+ const match = document.getElementById('match');
+ var match_active = false;
+ function lightMatch(){
+     if (!match_active){
+	 match_active = true;
+	 match.src = 'images/match-lighting.gif';
+	 setTimeout(() => {
+	     match.src = 'images/match-lit.gif';
+	 }, 660);
+     }
+ }
+ function extinguishMatch(){
+     match_active = false;
+     setTimeout(() => { match.src = 'images/match-out.png'; }, 200);
+ }
+ match.addEventListener('mouseover', lightMatch);
+ match.addEventListener('mouseout', extinguishMatch);
+ 
+
+ // PAGE LOAD
  setInterval(changeRandomFeature, 50);
  initialiseTrackButtons();
  document.getElementById('close-terminal').addEventListener('click', closeTerminal);
