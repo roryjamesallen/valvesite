@@ -23,7 +23,7 @@ function renderTracks(){
 <html>
     <head>
 	<title>The Valve That Failed</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.css?v=5">
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
