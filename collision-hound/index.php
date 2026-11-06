@@ -129,6 +129,29 @@
 	 #terminal:has(.playing) {
 	     height: min(350px, 90vh);
 	 }
+
+	 #info {
+	     position: absolute;
+	     cursor: pointer;
+	     padding: 1rem;
+	     top: 0;
+	     right: 0;
+	     width: 4rem;
+	     height: 4rem;
+	     color: white;
+	     background-color: black;
+	     z-index: 2;
+	 }
+	 #info .text {
+	     display: none;
+	 }
+	 #info.visible {
+	     width: unset;
+	     height: unset;
+	 }
+	 #info.visible .text {
+	     display: block;
+	 }
 .window {
     border: 2px solid var(--foreground);
     min-width: 150px;
@@ -158,11 +181,22 @@
 }
 .toolbar > .title {
 	 flex-grow: 1;
-}
+	 }
+	 a {
+	     color: white;
+	     text-underline-offset: 5px;
+	 }
 	</style>
     </head>
-    <body>
+    <body>	
 	<div id="container">
+	    <div id="info">
+		?????<br>?????<br>?????
+		<div class="text"><br>
+		    This page contains the audiovisual data that makes up the debut release of the valve that failed: <span style="color: red">collision hound</span>.<br><br>All tracks can be downloaded for free and may be shared as widely as you are able.<br><br>Individual track downloads are V0 .mp3s, but the .zip full EP download contains lossless .wavs<br><br>Resample as aggressively as you desire, and send us your produce so we may reresample.<br><br>If you must support us financially you can do so on <a href="https://thevalvethatfailed.bandcamp.com/">Bandcamp</a><br><br>The videos/visualisers can be viewed on <a href="https://www.youtube.com/@thevalvethatfailed">YouTube</a>.
+		</div>
+	    </div>
+	    
 	    <div id="square">
 		<div class="track play-all" style="left: 30.5%; top: 1.15%; width: 30%; aspect-ratio: 3.5 / 1" length="443">
 		    <div class="slider" style="background-color: blue"></div>
@@ -222,23 +256,22 @@
     </body>
 </html>
 
-<!--
-
-     if click on any box
-     1. stop all playback
-     2. if box was start box, set timeouts for all graphics and start playing full clip
-     3. if box wasn't start box, start box graphic and play box only
-     
--->
-
 <script>
  const player = document.getElementById('player');
  const player_source = document.getElementById('player-source');
  const video = document.getElementById('video');
  const video_source = document.getElementById('video-source');
+ const info = document.getElementById('info');
  var playing = false;
  var timeouts = [];
 
+ function clickInfo(){
+     if (info.classList.contains('visible')){
+	 info.classList.remove('visible');
+     } else {
+	 info.classList.add('visible');
+     }
+ }
  function resetAllSliders(){
      for (track of tracks){
 	 resetSlider(track);
@@ -359,5 +392,6 @@
  document.getElementById('maximise-terminal').addEventListener('click', maximiseTerminal);
  maximiseTerminal();
  minimiseTerminal();
+ info.addEventListener('click', clickInfo);
  
 </script>
