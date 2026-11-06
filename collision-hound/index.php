@@ -160,7 +160,7 @@
 		    Collision Hound EP<br><br><span class="play-icon">> PLAY ALL</span>
 		    <a class="download-button" download href="tracks/collision-hound.zip">↓zip</a>
 		</div>
-		<div class="track" style="left: 11.5%; top: 19.15%" length="61">
+		<div class="track" style="left: 11.5%; top: 19.15%" length="61" video="true">
 		    <div class="slider"></div>
 		    Toxic Gas on Draught<br><span class="play-icon">> PLAY</span>
 		    <a class="download-button" download href="tracks/toxic-gas-on-draught.mp3">↓mp3</a>
