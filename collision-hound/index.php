@@ -41,6 +41,7 @@
 	     background-image: url(collision-hound.jpg);
 	     background-size: contain;
 	     background-repeat: no-repeat;
+	     filter: drop-shadow(0 0 1000px);
 	 }
 	 .track {
 	     width: 20%;
@@ -50,9 +51,17 @@
 	     mix-blend-mode: color-dodge;
 	     background-color: black;
 	 }
+	 @media screen and (max-width: 900px){
+	     .track {
+		 font-size: 94%;
+	     }
+	 }
 	 .track.playing .download-button {
 	     background-color: red;
 	     color: white;
+	 }
+	 .track.played {
+	     opacity: 0.25;
 	 }
 	 .download-button {
 	     right: 0;
