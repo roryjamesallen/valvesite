@@ -1,9 +1,28 @@
 <?php
+$json = json_decode(file_get_contents('data.json'), true);
+if (isset($_GET['download']) and $_GET['download'] == 'true'){
+    $json['downloads'] += 1;
+    file_put_contents('data.json', json_encode($json));
+    Header('Location: ?download-successful');
+} else if (!isset($_GET['download-successful'])) {
+    $json['visits'] += 1;
+    file_put_contents('data.json', json_encode($json));
+}
 
 ?>
 
 <html>
     <head>
+	<title>Collision Hound EP by The Valve That Failed</title>
+	<meta charset="utf-8">
+     <meta name="description" content="Collision Hound is the debut release by The Valve That Failed">
+     <meta property="og:title" content="Collision Hound EP by The Valve That Failed">
+     <meta property="og:description" content="Collision Hound is the debut release by The Valve That Failed.">
+     <meta property="og:image" content="https://valve.hogwild.uk/collision-hound/collision-hound.jpg">
+     <meta property="og:url" content="https://valve.hogwild.uk/collision-hound">
+     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+     <link rel="icon" type="image/x-icon" href="https://valve.hogwild.uk/collision-hound/collision-hound.jpg"
+     <link rel="shortcut icon" href="https://valve.hogwild.uk/collision-hound/collision-hound.jpg" />
 	<style>
 	 @font-face {
 	     font-family: Super VCR;
@@ -152,6 +171,13 @@
 	 #info.visible .text {
 	     display: block;
 	 }
+	 #visitors {
+	     position: absolute;
+	     top: 0;
+	     left: 0;
+	     background-color: black;
+	     color: red;
+	 }
 .window {
     border: 2px solid var(--foreground);
     min-width: 150px;
@@ -190,6 +216,7 @@
     </head>
     <body>	
 	<div id="container">
+	    <div id="visitors"><?php echo $json['visits']; ?> visitors<br><?php echo $json['downloads']; ?> downloads</div>
 	    <div id="info">
 		?????<br>?????<br>?????
 		<div class="text"><br>
@@ -201,37 +228,37 @@
 		<div class="track play-all" style="left: 30.5%; top: 1.15%; width: 30%; aspect-ratio: 3.5 / 1" length="443">
 		    <div class="slider" style="background-color: blue"></div>
 		    Collision Hound EP<br><br><span class="play-icon">> PLAY ALL</span>
-		    <a class="download-button" download href="tracks/collision-hound.zip">↓zip</a>
+		    <a class="download-button" download href="tracks/The-Valve-That-Failed-Collision-Hound.zip">↓zip</a>
 		</div>
 		<div class="track" style="left: 11.5%; top: 19.15%" length="61" video="true">
 		    <div class="slider"></div>
 		    Toxic Gas on Draught<br><span class="play-icon">> PLAY</span>
-		    <a class="download-button" download href="tracks/toxic-gas-on-draught.mp3">↓mp3</a>
+		    <a class="download-button" download href="tracks/01-Toxic-Gas-on-Draught.mp3">↓mp3</a>
 		</div>
 		<div class="track" style="left: 31%; top: 37.5%" length="101" video="true">
 		    <div class="slider"></div>
 		    Pt I - Stage 2: The Hatching of the Eggs<br><span class="play-icon">> PLAY</span>
-		    <a class="download-button" download href="tracks/pti-stage-2-the-hatching-of-the-eggs.mp3">↓mp3</a>
+		    <a class="download-button" download href="tracks/02-Pt-I-Stage-2-The-Hatching-of-the-Eggs.mp3">↓mp3</a>
 		</div>
 		<div class="track" style="left: 50.5%; top: 55%" length="83" video="true">
 		    <div class="slider"></div>
 		    Within The Chickens' Domain<br><span class="play-icon">> PLAY</span>
-		    <a class="download-button" download href="tracks/within-the-chickens-domain.mp3">↓mp3</a>
+		    <a class="download-button" download href="tracks/03-Within-the-Chickens-Domain.mp3">↓mp3</a>
 		</div>
 		<div class="track" style="left: 11%; top: 64%" length="34" video="true">
 		    <div class="slider"></div>
 		    Pt II - The Scribbles on the Whiteboard<br><span class="play-icon">> PLAY</span>
-		    <a class="download-button" download href="tracks/ptii-the-scribbles-on-the-whiteboard.mp3">↓mp3</a>
+		    <a class="download-button" download href="tracks/04-Part-II-The-Scribbles-on-the-Whiteboard.mp3">↓mp3</a>
 		</div>
 		<div class="track" style="left: 70.15%; top: 73%" length="101" video="true">
 		    <div class="slider"></div>
 		    There Will Be Credits<br><span class="play-icon">> PLAY</span>
-		    <a class="download-button" download href="tracks/there-will-be-credits.mp3">↓mp3</a>
+		    <a class="download-button" download href="tracks/05-There-Will-Be-Credits.mp3">↓mp3</a>
 		</div>
 		<div class="track" style="left: 40.5%; top: 81.75%" length="63" video="true">
 		    <div class="slider"></div>
 		    Pt III - Transient Loss of Consciousness<br><span class="play-icon">> PLAY</span>
-		    <a class="download-button" download href="tracks/ptiii-transient-loss-of-consciousness.mp3">↓mp3</a>
+		    <a class="download-button" download href="tracks/06-Pt-III-Transient-Loss-of-Consciousness.mp3">↓mp3</a>
 		</div>
 	    </div>
 
@@ -262,6 +289,8 @@
  const video = document.getElementById('video');
  const video_source = document.getElementById('video-source');
  const info = document.getElementById('info');
+ const download_buttons = document.getElementsByClassName('download-button');
+ 
  var playing = false;
  var timeouts = [];
 
@@ -352,7 +381,7 @@
      }
      
      if (track.classList.contains('play-all')){
-	 playSource('tracks/collision-hound-ep.mp3');
+	 playSource('tracks/The-Valve-That-Failed-Collision-Hound.mp3');
 	 startSlider(track);
 	 let currentDelay = 0;
 	 for (let i=1; i<tracks.length; ++i){ // For every track (in order) in the EP
@@ -381,6 +410,9 @@
      terminal.style.height = 'min(350px, 90vh)';
      terminal.style.minHeight = 0;
  }
+ function addDownload(){
+     window.location = '?download=true';
+ }
 
  const tracks = document.getElementsByClassName('track');
  for (track of tracks){
@@ -393,5 +425,8 @@
  maximiseTerminal();
  minimiseTerminal();
  info.addEventListener('click', clickInfo);
+ for (download_button of download_buttons){
+     download_button.addEventListener('click', addDownload);
+ }
  
 </script>
