@@ -69,7 +69,36 @@ function renderTracks(){
 		<span id="face-text"></span>
 	    </div>
 
-	    <?php renderTracks(); ?>
+	    <style>
+	     @keyframes myAnimation {
+		 0%   {opacity: 1; color: red;}
+		 25%  {opacity: 1; color: white;}
+		 50%  {opacity: 0;}
+		 100% {}
+	     }
+
+	     #collision-hound {
+		 position: relative;
+	     }
+	     #collision-hound h2 {
+		 text-decoration: none;
+		 animation-name: myAnimation;
+		 animation-duration: 1s;
+		 animation-iteration-count: infinite;
+		 mix-blend-mode: difference;
+	     }
+	     #collision-hound img {
+		 position: absolute;
+		 top: 50%;
+		 left: 50%;
+		 transform: translate(-50%, -50%);
+		 z-index: -1;
+		 animation-name: myAnimation;
+		 animation-duration: 0.5s;
+		 animation-iteration-count: infinite;
+	     }
+	    </style>
+	    <a href="collision-hound" id="collision-hound"><img src="images/collision-hound-flash.png"><h2 style="color: red">collision hound<br><br>out now</h2></a>
 
 	    <div class="window" id="terminal">
 		<div class="toolbar">
@@ -351,7 +380,7 @@ function renderTracks(){
  
  window.onload = function() {
      introAnimation();
-     drawTrackLines();
-     window.addEventListener('resize', drawTrackLines);
+     //drawTrackLines();
+     //window.addEventListener('resize', drawTrackLines);
  };
 </script>
