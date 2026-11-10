@@ -118,6 +118,7 @@ if (isset($_GET['download']) and $_GET['download'] == 'true'){
 	 }
 
 	 #terminal {
+	     max-width: 90vw;
 	     height: 0;
 	     display: flex;
 	     flex-wrap: wrap;
