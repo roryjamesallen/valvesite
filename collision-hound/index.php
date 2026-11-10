@@ -32,6 +32,14 @@ if (isset($_GET['download']) and $_GET['download'] == 'true'){
 	     font-family: Press Start;
 	     src: url(../fonts/press_start.ttf);
 	 }
+	 html {
+	     font-size: 15px;
+	 }
+	 @media screen and (max-width: 900px){
+	     html {
+		 font-size: 8px;
+	     }
+	 }
 	 body {
 	     margin: 0;
 	     font-family: Super VCR;
@@ -69,11 +77,6 @@ if (isset($_GET['download']) and $_GET['download'] == 'true'){
 	     color: red;
 	     mix-blend-mode: color-dodge;
 	     background-color: black;
-	 }
-	 @media screen and (max-width: 900px){
-	     .track {
-		 font-size: 94%;
-	     }
 	 }
 	 .track.playing .download-button {
 	     background-color: red;
